@@ -1,11 +1,9 @@
 package com.springmvc.study2.basic.request;
 
+import com.springmvc.study2.basic.HelloData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,10 +29,8 @@ public class RequestParamController {
     @ResponseBody
     @RequestMapping("/request-param-v2")
     public String requestParamV2(@RequestParam("username") String username, @RequestParam("age") int age) throws IOException {
-
         log.info("username = {}", username);
         log.info("age = {}", age);
-
         return "ok";
     }
 
@@ -42,20 +38,16 @@ public class RequestParamController {
     @ResponseBody
     @RequestMapping("/request-param-v3")
     public String requestParamV3(@RequestParam String username, @RequestParam int age) throws IOException {
-
         log.info("username = {}", username);
         log.info("age = {}", age);
-
         return "ok";
     }
 
     @ResponseBody
     @RequestMapping("/request-param-v4")
     public String requestParamV4(String username, int age) throws IOException {
-
         log.info("username = {}", username);
         log.info("age = {}", age);
-
         return "ok";
     }
 
@@ -63,10 +55,8 @@ public class RequestParamController {
     @RequestMapping("/request-param-required")
     public String requestParamRequired(@RequestParam(required = true) String username,
                                        @RequestParam(required = false) Integer age) throws IOException {
-
         log.info("username = {}", username);
         log.info("age = {}", age);
-
         return "ok";
     }
 
@@ -74,20 +64,30 @@ public class RequestParamController {
     @RequestMapping("/request-param-default")
     public String requestParamDefault(@RequestParam(required = true, defaultValue = "guset") String username,
                                       @RequestParam(required = false, defaultValue = "-1") int age) throws IOException {
-
         log.info("username = {}", username);
         log.info("age = {}", age);
-
         return "ok";
     }
 
     @ResponseBody
     @RequestMapping("/request-param-map")
     public String requestParamMap(@RequestParam Map<String, Object> paramMap) throws IOException {
-
         log.info("username = {}", paramMap.get("username"));
         log.info("age = {}", paramMap.get("age"));
+        return "ok";
+    }
 
+    @ResponseBody
+    @RequestMapping("/model-attribute-v1")
+    public String modelAttributeV1(@ModelAttribute HelloData helloData) throws IOException {
+        log.info("helloData = {}", helloData);
+        return "ok";
+    }
+
+    @ResponseBody
+    @RequestMapping("/model-attribute-v2")
+    public String modelAttributeV2(HelloData helloData) throws IOException {
+        log.info("helloData = {}", helloData);
         return "ok";
     }
 
