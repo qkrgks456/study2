@@ -28,7 +28,8 @@ public class RequestParamController {
 
     @ResponseBody
     @RequestMapping("/request-param-v2")
-    public String requestParamV2(@RequestParam("username") String username, @RequestParam("age") int age) throws IOException {
+    public String requestParamV2(@RequestParam("username") String username,
+                                 @RequestParam("age") int age) {
         log.info("username = {}", username);
         log.info("age = {}", age);
         return "ok";

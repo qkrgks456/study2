@@ -14,7 +14,7 @@ public class MappingController {
         return "ok";
     }
 
-    @GetMapping("/hello")
+    @GetMapping("/hellos")
     public String mappingGet() {
         log.info("mappingGet");
         return "ok";
